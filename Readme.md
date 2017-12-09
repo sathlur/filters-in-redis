@@ -31,18 +31,18 @@ The cuckoo, dynamic cuckoo and dynamic bloom filters can be compiled and execute
 
 `BF.Create <key> capacity max_allowable_error`
 
-Creates a bloom filter named <key> which can hold membership information of ​ capacity elements with a false positive probability error of max_allowable_error
+Creates a bloom filter named _<key>_ which can hold membership information of _capacity_ elements with a false positive probability error of *max_allowable_error*
 The number of hash functions to be used is calculated as `HashCounts = − log(false PositiveError)/log(2)`
 
 The number of bits in the bloom filter created = `2*BitLength = − capacity * log(falsePositiveError)/ln(2)`
 
 `BF.Add <key> <value>`
 
-Adds element ​ value ​ the bloom filter ​ key
+Adds element _value_ to the bloom filter _key_
 
 `BF.Check <key> <value>`
 
-Checks if ​ value ​ element is present in bloom filter ​ key
+Checks if _value_ element is present in bloom filter _key_
 
 
 ### Dynamic Bloom Filter
@@ -52,16 +52,16 @@ filter is initialized over it.
 
 `DBF.Create <key> interval max_error`
 
-Creates a dynamic bloom filter named <key> initially holding just one bloom filter where each bloom filter can  contain a maximum of ​ interval elements and maintains a false positive error of ​max_error
+Creates a dynamic bloom filter named _<key>_ initially holding just one bloom filter where each bloom filter can contain a maximum of _interval_ elements and maintains a false positive error of *max_error*
 
 `DBF.Add <key> <value>`
 
-Adds element ​ value ​ to the topmost (active) bloom filter of the dynamic bloom filter named ​ key 
+Adds element _value_ to the topmost (active) bloom filter of the dynamic bloom filter named _key_
 If the topmost bloom filter is full, a new bloom filter is created
 
 `DBF.Check <key> <value>`
 
-Checks for the element ​ value ​ in the dynamic bloom filter named ​ key
+Checks for the element _value_ in the dynamic bloom filter named _key_
 Checks for the possibility of presence of the element in each bloom filter of the dynamic bloom. Only if every bloom filter denies containing the element, it is concluded that the element has indeed not been added till now
 
 
@@ -69,18 +69,18 @@ Checks for the possibility of presence of the element in each bloom filter of th
 
 `CF.Create <key> capacity max_kick_attempts`
 
-Creates a cuckoo filter that can contain ​ capacity elements and will try to kick ​ max_kick_attempts ​ elements out of their nest before ceasing 
+Creates a cuckoo filter that can contain _capacity_ elements and will try to kick max_kick_attempts elements out of their nest before ceasing 
 The elements are stored as two byte fingerprints and each bucket can contain four elements
 
 `CF.ADD <key> <value>`
 
-The element ​ value ​ is added to cuckoo filter named ​ key 
+The element _value_ is added to cuckoo filter named _key_ 
 If the both the buckets are full, one of the elements in either of the buckets is randomly chosen to be kicked out (which will then find their alternative bucket)
 
 `CF.Check <key> <value>`
 
-Checks if​ value ​ is present in ​ key
+Checks if  _value_ is present in _key_
 
 `CF.Delete <key> <value>`
 
-Deletes the ​ value ​ from ​ key
+Deletes the _value_ from _key_
